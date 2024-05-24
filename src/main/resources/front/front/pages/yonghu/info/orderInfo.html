@@ -1,0 +1,1132 @@
+<!-- 首页 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+    <link href="//unpkg.com/layui@2.9.8/dist/css/layui.css" rel="stylesheet">
+    <!-- 样式 -->
+    <link rel="stylesheet" href="../../../css/style.css"/>
+    <!-- 主题（主要颜色设置） -->
+    <link rel="stylesheet" href="../../../css/theme.css"/>
+    <!-- 通用的css -->
+    <link rel="stylesheet" href="../../../css/common.css"/>
+
+    <script type="text/javascript" src="../../../js/jquery.js"></script>
+</head>
+<style>
+    #test1 {
+        overflow: hidden;
+    }
+
+    #test1 .layui-carousel-ind li {
+        width: 50px;
+        height: 1px;
+        border-width: 0;
+        border-style: solid;
+        border-color: rgba(1, 1, 1, 0.3);
+        border-radius: 30px;
+        background-color: rgba(255, 0, 0, 1);
+        box-shadow: 0 0 0px rgba(255, 0, 0, .8);
+    }
+
+    #test1 .layui-carousel-ind li.layui-this {
+        width: 50px;
+        height: 10px;
+        border-width: 0;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.3);
+        border-radius: 50px;
+        background-color: rgba(0, 112, 126, 1);
+        box-shadow: 0 0 0px rgba(15, 98, 108);
+    }
+
+    .recommend .box {
+        width: 1002px;
+        margin: 0 auto;
+    }
+
+    .recommend .box .title {
+        padding: 10px 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .title span {
+        padding: 0 10px;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .recommend .box .filter {
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .recommend .box .filter .item-list {
+        display: flex;
+        align-items: center;
+    }
+
+    .recommend .box .filter .item-list .lable {
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .filter .item-list input {
+        padding: 0 10px;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .recommend .box .filter button {
+        display: flex;
+        padding: 0 10px;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+    }
+
+    .recommend .box .filter button i {
+        margin-right: 4px;
+    }
+
+    .recommend .box .list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .recommend .box .list .list-item {
+        flex: 0 0 25%;
+        padding: 0 5px;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .list .list-item .list-item-body {
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 3);
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .list .list-item-body img {
+        width: 100%;
+        height: 100px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .recommend .box .list .list-item-body .info {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .recommend .box .list .list-item-body .info .price {
+        padding-top: 5px;
+        color: red;
+        font-size: 14px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .list .list-item-body .info .name {
+        padding-top: 5px;
+        color: red;
+        font-size: 14px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .list .list-item3 {
+        flex: 0 0 33.33%;
+    }
+
+    .recommend .box .list .list-item5 {
+        flex: 0 0 20%;
+    }
+
+    .recommend .box .news {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        width: 100%;
+    }
+
+    .recommend .box .news .list-item {
+        flex: 0 0 20%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .news .list-item .list-item-body {
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, 3);
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+    }
+
+    .recommend .box .news .list-item .list-item-body img {
+        width: 120px;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .recommend .box .news .list-item .list-item-body .item-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .news .list-item .list-item-body .item-info .name {
+        padding-top: 5px;
+        color: red;
+        font-size: 14px;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    .recommend .box .news .list-item .list-item-body .item-info .time {
+        padding-top: 5px;
+        color: red;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        box-sizing: border-box;
+    }
+
+    .recommend .box .news .list-item1 {
+        flex: 0 0 100%;
+    }
+
+    .recommend .box .news .list-item3 {
+        flex: 0 0 33.33%;
+    }
+
+    .index-pv1 .animation-box:hover {
+        transform: perspective(5000px) translate3d(20px, 0px, 0px) scale(1.0) rotate(0deg) skew(10deg, 0deg);
+        transition: all 0.5s;
+    }
+
+    .layui-laypage .layui-laypage-count {
+        padding: 0 10px;
+    }
+
+    .layui-laypage .layui-laypage-skip {
+        padding-left: 10px;
+    }
+
+
+    body{font:0.8em arial,sans-serif;}
+
+
+
+
+
+
+
+
+
+
+
+    .selectMultiple {
+        width: 240px;
+        position: relative;
+    }
+
+    .selectMultiple select {
+        display: none;
+    }
+
+    .selectMultiple>div {
+        position: relative;
+        z-index: 2;
+        padding: 8px 12px 2px 12px;
+        border-radius: 8px;
+        background: #fff;
+        font-size: 14px;
+        min-height: 44px;
+        box-shadow: 0 4px 16px 0 rgba(22, 42, 90, 0.12);
+        transition: box-shadow .3s ease;
+    }
+
+    .selectMultiple>div:hover {
+        box-shadow: 0 4px 24px -1px rgba(22, 42, 90, 0.16);
+    }
+
+    .selectMultiple>div .arrow {
+        right: 1px;
+        top: 0;
+        bottom: 0;
+        cursor: pointer;
+        width: 28px;
+        position: absolute;
+    }
+
+    .selectMultiple>div .arrow:before,
+    .selectMultiple>div .arrow:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 2px;
+        height: 8px;
+        border-bottom: 8px solid #99A3BA;
+        top: 43%;
+        transition: all .3s ease;
+    }
+
+    .selectMultiple>div .arrow:before {
+        right: 12px;
+        transform: rotate(-130deg);
+    }
+
+    .selectMultiple>div .arrow:after {
+        left: 9px;
+        transform: rotate(130deg);
+    }
+
+    .selectMultiple>div span {
+        color: #99A3BA;
+        display: block;
+        position: absolute;
+        left: 12px;
+        cursor: pointer;
+        top: 8px;
+        line-height: 28px;
+        transition: all .3s ease;
+    }
+
+    .selectMultiple>div span.hide {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-4px, 0);
+    }
+
+    .selectMultiple>div a {
+        position: relative;
+        padding: 0 24px 6px 8px;
+        line-height: 28px;
+        color: #1E2330;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 6px 0 0;
+    }
+
+    .selectMultiple>div a em {
+        font-style: normal;
+        display: block;
+        white-space: nowrap;
+    }
+
+    .selectMultiple>div a:before {
+        content: '';
+        left: 0;
+        top: 0;
+        bottom: 6px;
+        width: 100%;
+        position: absolute;
+        display: block;
+        background: rgba(228, 236, 250, 0.7);
+        z-index: -1;
+        border-radius: 4px;
+    }
+
+    .selectMultiple>div a i {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        height: 28px;
+        display: block;
+    }
+
+    .selectMultiple>div a i:before,
+    .selectMultiple>div a i:after {
+        content: '';
+        display: block;
+        width: 2px;
+        height: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: #189fff;
+        border-radius: 1px;
+    }
+
+    .selectMultiple>div a i:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .selectMultiple>div a i:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .selectMultiple>div a.notShown {
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+
+    .selectMultiple>div a.notShown:before {
+        width: 28px;
+        transition: width 0.45s cubic-bezier(0.87, -0.41, 0.19, 1.44) 0.2s;
+    }
+
+    .selectMultiple>div a.notShown i {
+        opacity: 0;
+        transition: all .3s ease .3s;
+    }
+
+    .selectMultiple>div a.notShown em {
+        opacity: 0;
+        transform: translate(-6px, 0);
+        transition: all .4s ease .3s;
+    }
+
+    .selectMultiple>div a.notShown.shown {
+        opacity: 1;
+    }
+
+    .selectMultiple>div a.notShown.shown:before {
+        width: 100%;
+    }
+
+    .selectMultiple>div a.notShown.shown i {
+        opacity: 1;
+    }
+
+    .selectMultiple>div a.notShown.shown em {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    .selectMultiple>div a.remove:before {
+        width: 28px;
+        transition: width 0.4s cubic-bezier(0.87, -0.41, 0.19, 1.44) 0s;
+    }
+
+    .selectMultiple>div a.remove i {
+        opacity: 0;
+        transition: all .3s ease 0s;
+    }
+
+    .selectMultiple>div a.remove em {
+        opacity: 0;
+        transform: translate(-12px, 0);
+        transition: all .4s ease 0s;
+    }
+
+    .selectMultiple>div a.remove.disappear {
+        opacity: 0;
+        transition: opacity .5s ease 0s;
+    }
+
+    .selectMultiple>ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 16px;
+        z-index: 1;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        visibility: hidden;
+        opacity: 0;
+        border-radius: 8px;
+        transform: translate(0, 20px) scale(0.8);
+        transform-origin: 0 0;
+        filter: drop-shadow(0 12px 20px rgba(22, 42, 90, 0.08));
+        transition: all 0.4s ease, transform 0.4s cubic-bezier(0.87, -0.41, 0.19, 1.44), filter 0.3s ease 0.2s;
+    }
+
+    .selectMultiple>ul li {
+        color: #1E2330;
+        background: #fff;
+        padding: 12px 16px;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        transition: background .3s ease, color .3s ease, transform .3s ease .3s, opacity .5s ease .3s, border-radius .3s ease .3s;
+    }
+
+    .selectMultiple>ul li:first-child {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .selectMultiple>ul li:first-child:last-child {
+        border-radius: 8px;
+    }
+
+    .selectMultiple>ul li:last-child {
+        border-radius: 0 0 8px 8px;
+    }
+
+    .selectMultiple>ul li:last-child:first-child {
+        border-radius: 8px;
+    }
+
+    .selectMultiple>ul li:hover {
+        background: #189fff;
+        color: #fff;
+    }
+
+    .selectMultiple>ul li:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%, -50%);
+        transform-origin: 50% 50%;
+    }
+
+    .selectMultiple>ul li.beforeRemove {
+        border-radius: 0 0 8px 8px;
+    }
+
+    .selectMultiple>ul li.beforeRemove:first-child {
+        border-radius: 8px;
+    }
+
+    .selectMultiple>ul li.afterRemove {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .selectMultiple>ul li.afterRemove:last-child {
+        border-radius: 8px;
+    }
+
+    .selectMultiple>ul li.remove {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    .selectMultiple>ul li.remove:after {
+        animation: ripple .4s ease-out;
+    }
+
+    .selectMultiple>ul li.notShown {
+        display: none;
+        transform: scale(0);
+        opacity: 0;
+        transition: transform .35s ease, opacity .4s ease;
+    }
+
+    .selectMultiple>ul li.notShown.show {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .selectMultiple.open>div {
+        box-shadow: 0 4px 20px -1px rgba(22, 42, 90, 0.12);
+    }
+
+    .selectMultiple.open>div .arrow:before {
+        transform: rotate(-50deg);
+    }
+
+    .selectMultiple.open>div .arrow:after {
+        transform: rotate(50deg);
+    }
+
+    .selectMultiple.open>ul {
+        transform: translate(0, 12px) scale(1);
+        opacity: 1;
+        visibility: visible;
+        filter: drop-shadow(0 16px 24px rgba(22, 42, 90, 0.16));
+    }
+
+    @keyframes ripple {
+        0% {
+            transform: scale(0, 0);
+            opacity: 1;
+        }
+
+        25% {
+            transform: scale(30, 30);
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(50, 50);
+        }
+    }
+
+    html {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    * {
+        box-sizing: inherit;
+    }
+
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: Roboto, Arial;
+        color: #ADAFB6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+    }
+
+    body .selectMultiple {
+       margin:0 10px;
+    }
+
+    body .dribbble {
+        position: fixed;
+        display: block;
+        right: 20px;
+        bottom: 20px;
+        opacity: .5;
+        transition: all .4s ease;
+    }
+
+    body .dribbble:hover {
+        opacity: 1;
+    }
+
+    body .dribbble img {
+        display: block;
+        height: 36px;
+    }
+
+</style>
+<body>
+
+<div id="app">
+
+    <div class="data-detail">
+        <!--    <div class="data-detail-breadcrumb" :style='{"padding":"0 10px","boxShadow":"6px 8px 6px rgba(0, 112, 126, 1)","margin":"20px auto","borderColor":"rgba(0, 112, 126, 1)","backgroundColor":"#fff","borderRadius":"4px","borderWidth":"1px","borderStyle":"solid","height":"54px"}'>-->
+        <!--					<span class="layui-breadcrumb">-->
+        <!--						<a class="first" :style='{"padding":"8px 10px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"0 5px","borderColor":"rgba(255,0,0,.3)","backgroundColor":"#fff","color":"rgba(0, 112, 126, 1)","borderRadius":"0","borderWidth":"0","fontSize":"16px","borderStyle":"solid"}' href="../home/home.html">首页</a>-->
+        <!--						<a><cite :style='{"padding":"8px 15px","boxShadow":"0 0 6px rgba(0, 112, 126, 1)","margin":"0 15px","borderColor":"rgba(0, 112, 126, 1)","backgroundColor":"#fff","color":"rgba(0, 112, 126, 1)","borderRadius":"4px","borderWidth":"0","fontSize":"16px","borderStyle":"solid"}'>{{title}}</cite></a>-->
+        <!--					</span>-->
+
+
+        <!--    </div>-->
+        <div class="layui-row" style="display: flex">
+            <div class="layui-col-md5" style="width:400px">
+                <!-- <div class="layui-carousel" id="swiper">
+                  <div carousel-item id="swiper-item">
+                    <div v-for="(item,index) in swiperList" v-bind:key="index">
+                      <img class="swiper-item" :src="item.img">
+                    </div>
+                  </div>
+                </div> -->
+                <div class="layui-carousel" id="swiper"
+                     :style='{"boxShadow":"0 0 6px rgba(51, 140, 145, 1)","margin":"0 auto","borderColor":"rgba(0,0,0,.3)","borderRadius":"4px","borderWidth":"0","width":"400px","borderStyle":"solid","height":"400px"}'>
+                    <div carousel-item>
+                        <div>
+                            <img v-if="detail.kefangtupian" style="width: 100%;height: 100%;object-fit:cover;"
+                                 :src="detail.kefangtupian"/>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="layui-col-md7" style="padding-left: 20px;flex: 1;"
+                 :style='{"padding":"0","boxShadow":"0 0 6px rgba(51, 140, 145, 1)","margin":"0 0 0 20px","borderColor":"rgba(194, 211, 211, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'>
+                <h1 style="position: relative;"
+                    :style='{"padding":"10px 15px","boxShadow":"0 0 0px rgba(51, 140, 145, 1)","borderColor":"rgba(255, 255, 255, 0.3)","backgroundColor":"rgba(38, 155, 158, 1)","color":"rgba(255, 255, 255, 1)","borderRadius":"0","textAlign":"left","borderWidth":"0","fontSize":"20px","borderStyle":"solid"}'
+                    class="title">{{title}}</h1>
+                <div :style='{"padding":"6px 15px","boxShadow":"0 0  0px rgba(51, 140, 145, 1)","margin":"0","borderColor":"rgba(242, 240, 240, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'
+                     class="detail-item">
+                    <span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"#333","textAlign":"left"}'>预订编号：</span>
+                    <span :style='{"padding":"5px 15px","boxShadow":"0 0 0px rgba(255,0,0,.3)","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"#333","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"auto","fontSize":"14px","borderStyle":"solid"}'
+                          class="desc">
+								{{detail.yudingbianhao}}
+							</span>
+                </div>
+                <div :style='{"padding":"6px 15px","boxShadow":"0 0  0px rgba(51, 140, 145, 1)","margin":"0","borderColor":"rgba(242, 240, 240, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'
+                     class="detail-item">
+                    <span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"#333","textAlign":"left"}'>用户姓名：</span>
+                    <span :style='{"padding":"5px 15px","boxShadow":"0 0 0px rgba(255,0,0,.3)","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"#333","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"auto","fontSize":"14px","borderStyle":"solid"}'
+                          class="desc">
+								{{detail.yonghuxingming}}
+							</span>
+                </div>
+                <div :style='{"padding":"6px 15px","boxShadow":"0 0  0px rgba(51, 140, 145, 1)","margin":"0","borderColor":"rgba(242, 240, 240, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'
+                     class="detail-item">
+                    <span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"#333","textAlign":"left"}'>客房名称：</span>
+                    <span :style='{"padding":"5px 15px","boxShadow":"0 0 0px rgba(255,0,0,.3)","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"#333","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"auto","fontSize":"14px","borderStyle":"solid"}'
+                          class="desc">
+								{{detail.kefangmingcheng}}
+							</span>
+                </div>
+                <div :style='{"padding":"6px 15px","boxShadow":"0 0  0px rgba(51, 140, 145, 1)","margin":"0","borderColor":"rgba(242, 240, 240, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'
+                     class="detail-item">
+                    <span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"#333","textAlign":"left"}'>客房类型：</span>
+                    <span :style='{"padding":"5px 15px","boxShadow":"0 0 0px rgba(255,0,0,.3)","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"#333","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"auto","fontSize":"14px","borderStyle":"solid"}'
+                          class="desc">
+								{{detail.kefangleixing}}
+							</span>
+                </div>
+                <div :style='{"padding":"6px 15px","boxShadow":"0 0  0px rgba(51, 140, 145, 1)","margin":"0","borderColor":"rgba(242, 240, 240, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'
+                     class="detail-item">
+                    <span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"#333","textAlign":"left"}'>押金：</span>
+                    <span :style='{"padding":"5px 15px","boxShadow":"0 0 0px rgba(255,0,0,.3)","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"#333","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"auto","fontSize":"14px","borderStyle":"solid"}'
+                          class="desc">
+								{{100}}
+							</span>
+                </div>
+                <div :style='{"padding":"6px 15px","boxShadow":"0 0  0px rgba(51, 140, 145, 1)","margin":"0","borderColor":"rgba(242, 240, 240, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'
+                     class="detail-item">
+                    <span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"#333","textAlign":"left"}'>登记时间：</span>
+                    <span :style='{"padding":"5px 15px","boxShadow":"0 0 0px rgba(255,0,0,.3)","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"#333","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"auto","fontSize":"14px","borderStyle":"solid"}'
+                          class="desc">
+								{{detail.addtime}}
+							</span>
+                </div>
+                <div :style='{"padding":"6px 15px","boxShadow":"0 0  0px rgba(51, 140, 145, 1)","margin":"0","borderColor":"rgba(242, 240, 240, 1)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"1px","borderStyle":"solid"}'
+                     class="detail-item">
+                    <span :style='{"padding":"0 12px 0 0","minWidth":"94px","fontSize":"14px","color":"#333","textAlign":"left"}'>位置图片：</span>
+                    <span :style='{"padding":"5px 15px","boxShadow":"0 0 0px rgba(255,0,0,.3)","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","color":"#333","borderRadius":"4px","textAlign":"left","borderWidth":"0","width":"auto","lineHeight":"auto","fontSize":"14px","borderStyle":"solid"}'
+                          class="desc">
+               <img data-src="http://localhost:8080/springboot173pp/upload/位置图1.png"
+                    src="http://localhost:8080/springboot173pp/upload/位置图1.png" lay-on="previewImg"
+                    style="width: 60px;height: 60px"/>
+                <img data-src="http://localhost:8080/springboot173pp/upload/位置图2.png"
+                     src="http://localhost:8080/springboot173pp/upload/位置图2.png" lay-on="previewImg"
+                     style="width: 60px;height: 60px"/>
+                <img data-src="http://localhost:8080/springboot173pp/upload/位置图3.png"
+                     src="http://localhost:8080/springboot173pp/upload/位置图3.png" lay-on="previewImg"
+                     style="width: 60px;height: 60px"/>
+          </span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row detail-tab">
+            <div class="layui-tab layui-tab-card" style='display:flex;  justify-content:flex-end;'
+                 style="overflow: hidden;">
+
+                <!--        <ul class="layui-tab-title" :style='{"color":"rgba(38, 155, 158, 1)","backgroundColor":"#f2f2f2","fontSize":"14px"}'>-->
+
+                <!--          <li class="layui-this">备注</li>-->
+                <div style="display: flex;align-items: center;padding: 10px;">
+                    <span>房间号:</span>
+                    <input type="text" id="rootId" hidden>
+
+                    <select id="multsel" multiple data-placeholder="请选择房间号">
+
+                    </select>
+
+                    <button type="button" class="layui-btn layui-bg-blue" lay-on="inputRootID">入住</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="layui-row detail-tab">
+            <div class="layui-tab layui-tab-card" style="overflow: hidden;">
+                <div>
+                    <div class="title"
+                         :style='{"padding":"10px 0px 10px 0","boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"10px 0 10px 0","borderColor":"rgba(38, 155, 158, 1)","backgroundColor":"rgba(38, 155, 158, 1)","borderRadius":"4px","borderWidth":"2px","borderStyle":"solid","justifyContent":"space-between","height":"54px"}'>
+                        <span id="totaltext" :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(255,0,0,0)","borderColor":"rgba(255,0,0,1)","backgroundColor":"rgba(0,0,0,0)","color":"rgba(255, 255, 255, 1)","borderRadius":"0 0 2px 0","borderWidth":"0","fontSize":"18px","borderStyle":"solid"}'>剩余房间数(0)</span>
+                    </div>
+                </div>
+                <div style="width: 600px;display:flex">
+                    <div v-for="(item,index) in surplusRooms" :key="index" class="list-item" style="margin:10px"
+                         :class="4=='3'?'list-item3':4=='5'?'list-item5':''">
+                        <div class="list-item-body animation-box"
+                             :style='{"padding":"10px","boxShadow":"0 0 6px rgba(0, 112, 126, 1)","margin":"0 0 10px 0","borderColor":"rgba(0, 112, 126, 1)","backgroundColor":"#fff","borderRadius":"4px","borderWidth":"0","borderStyle":"solid","height":"150px"}'>
+                            <img :style='{"boxShadow":"0 0 6px rgba(0, 112, 126, 1)","borderColor":"rgba(0,0,0,.3)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","width":"100px","height":"100px"}'
+                                 :src="item.kefangtupian?item.kefangtupian.split(',')[0]:''">
+                            <div class="info">
+                                <div v-if="item.xcxsd"
+                                     :style='{"padding":"0","margin":"10px 0 0 0","backgroundColor":"rgba(0,0,0,0)","color":"red","borderRadius":"0","textAlign":"right","width":"100%","fontSize":"12px"}'
+                                     class="price">{{item.xsada}} RMB
+                                </div>
+                                <div v-if="true"
+                                     :style='{"isshow":true,"padding":"0","margin":"5px 0 0 0","backgroundColor":"rgba(0,0,0,0)","color":"rgba(0, 0, 0, 1)","borderRadius":"0","textAlign":"center","width":"100%","fontSize":"20px"}'
+                                     class="name">{{item.kefangmingcheng}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//unpkg.com/layui@2.9.8/dist/layui.js"></script>
+
+<!--<script type="text/javascript" src="../../../js/xm-select.js"></script>-->
+ <script src="../../../js/vue.js"></script>
+<!-- 组件配置信息 -->
+<script src="../../../js/config.js"></script>
+<!-- 扩展插件配置信息 -->
+<script src="../../../modules/config.js"></script>
+<!-- 工具方法 -->
+<script src="../../../js/utils.js"></script>
+
+<script>
+    function inisel(detail){
+        var select = $('select[multiple]');
+        var options = select.find('option');
+        var div = $('<div />').addClass('selectMultiple');
+        var active = $('<div />');
+        var list = $('<ul />');
+        var placeholder = select.data('placeholder');
+        var span = $('<span />').text(placeholder).appendTo(active);
+        options.each(function() {
+            var text = $(this).text();
+            if($(this).is(':selected')) {
+                active.append($('<a />').html('<em>' + text + '</em><i></i>'));
+                span.addClass('hide');
+            } else {
+                list.append($('<li />').html(text));
+            }
+        });
+        active.append($('<div />').addClass('arrow'));
+        div.append(active).append(list);
+        select.wrap(div);
+        $(document).on('click', '.selectMultiple ul li', function(e) {//添加事件
+            var selelement = document.querySelectorAll('.notShown.shown');
+            console.log(detail)
+            if(selelement&&(selelement.length>=(detail.shuliang)))
+            {
+                alert("请勿超过您的预定房间数"+detail.shuliang);
+                return;
+            }
+            var select = $(this).parent().parent();
+            var li = $(this);
+            if(!select.hasClass('clicked')) {
+                select.addClass('clicked');
+                li.prev().addClass('beforeRemove');
+                li.next().addClass('afterRemove');
+                li.addClass('remove');
+                var a = $('<a />').addClass('notShown').html('<em>' + li.text() + '</em><i></i>').hide().appendTo(select.children('div'));
+                a.slideDown(400, function() {
+                    setTimeout(function() {
+                        a.addClass('shown');
+                        select.children('div').children('span').addClass('hide');
+                        select.find('option:contains(' + li.text() + ')').prop('selected', true);
+                    }, 500);
+                });
+                setTimeout(function() {
+                    if(li.prev().is(':last-child')) {
+                        li.prev().removeClass('beforeRemove');
+                    }
+                    if(li.next().is(':first-child')) {
+                        li.next().removeClass('afterRemove');
+                    }
+                    setTimeout(function() {
+                        li.prev().removeClass('beforeRemove');
+                        li.next().removeClass('afterRemove');
+                    }, 200);
+
+                    li.slideUp(400, function() {
+                        li.remove();
+                        select.removeClass('clicked');
+                    });
+                }, 600);
+            }
+        });
+
+        $(document).on('click', '.selectMultiple > div a', function(e) {
+            var select = $(this).parent().parent();
+            var self = $(this);
+            self.removeClass().addClass('remove');
+            select.addClass('open');
+            setTimeout(function() {
+                self.addClass('disappear');
+                setTimeout(function() {
+                    self.animate({
+                        width: 0,
+                        height: 0,
+                        padding: 0,
+                        margin: 0
+                    }, 300, function() {
+                        var li = $('<li />').text(self.children('em').text()).addClass('notShown').appendTo(select.find('ul'));
+
+                        li.slideDown(400, function() {
+                            li.addClass('show');
+                            setTimeout(function() {
+                                select.find('option:contains(' + self.children('em').text() + ')').prop('selected', false);
+                                if(!select.find('option:selected').length) {
+                                    select.children('div').children('span').removeClass('hide');
+                                }
+                                li.removeClass();
+                            }, 400);
+                        });
+                        self.remove();
+                    })
+                }, 300);
+            }, 400);
+        });
+
+        $(document).on('click', '.selectMultiple > div .arrow, .selectMultiple > div span', function(e) {
+            $(this).parent().parent().toggleClass('open');
+        });
+    }
+
+
+</script>
+
+
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            // 轮播图
+            swiperList: [],
+            // 数据详情
+            detail: {
+                id: 0
+            },
+            // 商品标题
+            title: '',
+            // 倒计时
+            count: 0,
+            // 加入购物车数量
+            buynumber: 1,
+            // 当前详情页表
+            detailTable: 'kefangyuding',
+            // 评价列表
+            dataList: [],
+            // 选座座位列表
+            numberList: [],
+            surplusRooms: [],
+        },
+        methods: {
+            jump(url) {
+                jump(url)
+            },
+            isAuth(tablename, button) {
+                return isFrontAuth(tablename, button)
+            },
+            // 倒计时初始化
+            countDown() {
+                let reversetime = new Date(this.detail.reversetime).getTime()
+                let now = new Date().getTime();
+                let count = reversetime - now;
+                if (count > 0) {
+                    this.count = count / 1000
+                    var _this = this;
+                    this.inter = window.setInterval(function () {
+                        _this.count = _this.count - 1;
+                        if (_this.count < 0) {
+                            window.clearInterval(_this.inter);
+                            layer.msg("活动已结束", {
+                                time: 2000,
+                                icon: 5
+                            })
+                        }
+                    }, 1000);
+                }
+            },
+
+            // 下载文件
+            downFile(url) {
+                var download = $("#download");
+                download.append(
+                    "<a id=\"down\" href=\"aaaa.txt\" target=\"_blank\" download=\"aaaa.txt\" style=\"display:none\">下载该文件</a>");
+                console.log(download);
+                $("#down")[0].click();
+            },
+            // 跨表
+            onAcrossTap(acrossTable) {
+                localStorage.setItem('crossTable', `fuwufeiyong`);
+                localStorage.setItem('crossObj', JSON.stringify(this.detail));
+                jump(`../${acrossTable}/add.html?corss=true`);
+            },
+        }
+    })
+
+    layui.use(['layer', 'form', 'element', 'carousel', 'http', 'jquery', 'laypage', "util"], function () {
+        var layer = layui.layer;
+        var element = layui.element;
+        var form = layui.form;
+        var carousel = layui.carousel;
+        var http = layui.http;
+        var jquery = layui.jquery;
+        var laypage = layui.laypage;
+        var util = layui.util;
+        var $ = layer.$;
+
+        var limit = 10;
+
+
+
+        // 数据ID
+        var id = http.getParam('id');
+        console.log('id' + id);
+        vue.detail.id = id;
+
+        // 商品信息
+        http.request(`${vue.detailTable}/detail/` + id, 'get', {}, function (res) {
+            console.log('res', res);
+            // 详情信息
+            vue.detail = res.data
+            // var swiperItemHtml = '';
+            // for (let item of vue.swiperList) {
+            // 	swiperItemHtml +=
+            // 		'<div>' +
+            // 		'<img class="swiper-item" style="width: 100%;height: 100%;object-fit:cover;" src="' + item + '">' +
+            // 		'</div>';
+            // }
+            // jquery('#swiper-item').html(swiperItemHtml);
+            // 轮播图
+            vue.$nextTick(() => {
+                carousel.render({
+                    elem: '#swiper',
+                    width: '400px',
+                    height: '400px',
+                    arrow: 'hover',
+                    anim: 'default',
+                    autoplay: 'true',
+                    interval: '3000',
+                    indicator: 'inside'
+                });
+
+            })
+            getroomlist(vue.detail)
+            console.log('vue.detail', vue.detail)
+            // http.request('kefangyuding/querybybh/' + vue.detail.yudingbianhao, 'get', {}, function (res) {
+            //     console.log('res', res);
+            //     // 详情信息
+            //     vue.details = res.data
+            //     getroomlist(vue.details)
+            // });
+
+        });
+
+
+
+        // 获取列表数据
+
+
+        function getroomlist(details) {
+            http.request('kefangxinxi/fist?kefangleixing='+vue.detail.kefangleixing+"&kefangmingcheng="+
+                vue.detail.kefangmingcheng+"&jiudianmingcheng="+vue.detail.jiudianmingcheng
+                , 'get', {}, function (res) {
+                    vue.surplusRooms = res.data.list;
+                    document.getElementById("totaltext").innerText = "剩余房间数：（"+res.data.list.length+"）";
+                    let sel=document.getElementById("multsel");
+                    for(let i=0;i<res.data.list.length;i++){
+                        let opt=document.createElement("option");
+                        opt.value=res.data.list[i].kefangmingcheng;
+                        opt.innerText=res.data.list[i].kefangmingcheng;
+                        sel.append(opt);
+                    }
+                    inisel(details)
+                })
+        }
+
+        util.on('lay-on', {
+            'inputRootID': () => {
+
+                var selelement = document.querySelectorAll('.notShown.shown');
+                if( selelement==null||selelement==undefined||selelement.length<=0)
+                {
+                     alert("请选择房间号");
+                     return;
+                }
+                let romnums="";
+                for(let i=0;i<selelement.length;i++){
+                    let item=selelement[i];
+                    console.log(item.innerText)
+                    if(romnums==""){
+                        romnums=item.innerText
+                    }else{
+                        romnums=romnums+","+item.innerText
+                    }
+
+                }
+                var data = {
+                    yudingbianhao: vue.detail.yudingbianhao, //预订编号
+                    kefangmingcheng: vue.detail.kefangmingcheng, // 客房名称
+                    kefangleixing: vue.detail.kefangleixing, // 客房类型
+                    fangjianhao: romnums,  // 房间号
+                    yonghuzhanghao: vue.detail.yonghuzhanghao, // 用户账户
+                    yonghuxingming: vue.detail.yonghuxingming, // 用户姓名
+                    lianxidianhua: vue.detail.lianxidianhua, // 联系电话
+                    yajin: '100', //押金
+                    ispay: '已支付',
+                    room:romnums
+                }
+
+                http.requestJson('ruzhudengji' + '/add', 'post', data, function (res) {
+                    layer.msg('提交成功', {
+                        time: 2000,
+                        icon: 6
+                    }, function () {
+                        back();
+                    });
+                });
+            },
+            'previewImg': (e) => {
+                console.log('' + e[0].getAttribute("data-src"));
+                let src = e[0].getAttribute("data-src");
+
+                var img = new Image();
+
+                var imgHtml = "<img src='" + src + "' width='100%' height='100%'/>";
+
+                //弹出层
+
+                layer.open({
+
+                    type: 1,
+
+                    shade: 0.8,
+
+                    offset: 'auto',
+
+                    area: [600 + 'px', 300 + 'px'],
+
+                    shadeClose: true,
+
+                    scrollbar: false,
+
+                    title: "图片预览", //不显示标题
+
+                    content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+
+                    cancel: function () {
+
+                        //layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });
+
+                    }
+
+                });
+            }
+        })
+    });
+</script>
+</body>
+</html>

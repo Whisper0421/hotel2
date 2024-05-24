@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!-- bootstrap样式，地图插件使用 -->
+  <link rel="stylesheet" href="../../../css/bootstrap.min.css" />
+  <link href="//unpkg.com/layui@2.9.8/dist/css/layui.css" rel="stylesheet">
+  <!-- 样式 -->
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <!-- 主题（主要颜色设置） -->
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <!-- 通用的css -->
+  <link rel="stylesheet" href="../../../css/common.css" />
+  <script type="text/javascript" src="../../xznstatic/js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="../../xznstatic/js/jquery.SuperSlide.2.1.1.js"></script>
+  <style>
+      html::after {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          content: '';
+          display: block;
+          background-attachment: fixed;
+          background-size: cover;
+          background-position: center;
+          z-index: -1;
+      }
+      #swiper {
+          overflow: hidden;
+          margin: 0 auto;
+      }
+      #swiper .layui-carousel-ind li {
+          width: 50px;
+          height: 1px;
+          border-width: 0;
+          border-style: solid;
+          border-color: rgba(1, 1, 1, 0.3);
+          border-radius: 30px;
+          background-color: rgba(255, 0, 0, 1);
+          box-shadow: 0 0 0px rgba(255,0,0,.8);
+      }
+      #swiper .layui-carousel-ind li.layui-this {
+          width: 50px;
+          height: 10px;
+          border-width: 0;
+          border-style: solid;
+          border-color: rgba(0, 0, 0, 0.3);
+          border-radius: 50px;
+          background-color: rgba(0, 112, 126, 1);
+          box-shadow: 0 0 0px rgba(15,98,108);
+      }
+
+      button, button:focus {
+          outline: none;
+      }
+
+      .data-add-container .add .layui-select-title .layui-unselect {
+          padding: 0 12px;
+          height: 40px;
+          font-size: 14px;
+          color: #333;
+          border-radius: 4px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: #DCDFE6;
+          background-color: #fff;
+          box-shadow: 0 0 0px rgba(255,0,0,.8);
+          text-align: left;
+      }
+      .data-add-container .add .layui-form-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .data-add-container .layui-form-pane .layui-form-item[pane] .layui-form-label {
+          margin: 0;
+          position: inherit;
+          background: transparent;
+          border: 0;
+      }
+      .data-add-container .add .layui-input-block {
+          margin: 0;
+          flex: 1;
+      }
+      .data-add-container .layui-form-pane .layui-form-item[pane] .layui-input-inline {
+          margin: 0;
+          flex: 1;
+          display: flex;
+      }
+  </style>
+</head>
+<body>
+<form class="layui-form">
+  <div class="layui-form-item">
+    <div class="layui-input-inline layui-input-wrap">
+      <input type="text" id="vercode" name="vercode" lay-verify="required" autocomplete="off" lay-affix="clear" class="layui-input">
+    </div>
+  </div>
+</form>
+
+<script src="../../../layui/layui.js"></script>
+<script src="../../../js/vue.js"></script>
+<script src="../../../js/config.js"></script>
+<script src="../../../modules/config.js"></script>
+<script src="../../../js/utils.js"></script>
+<script>
+
+</script>
+</body>
+</html>
